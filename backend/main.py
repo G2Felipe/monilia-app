@@ -20,14 +20,21 @@ app = FastAPI(
 # La configuración de CORS se realiza después de crear todas las rutas
 
 # Cargar el modelo y las clases
-MODEL_PATH = os.path.join(os.getcwd(), "cacao_resnet101_classifier3.keras")
-CLASS_NAMES_PATH = os.path.join(os.getcwd(), "class_names.json")
+MODEL_PATH = os.path.join(os.path.dirname(os.getcwd()), "cacao_resnet101_classifier3.keras")
+CLASS_NAMES_PATH = os.path.join(os.path.dirname(os.getcwd()), "class_names.json")
 UMBRAL_CONFIANZA_NO_CACAO = 70.0
 
 print(f"MODEL_PATH: {MODEL_PATH}")
 print(f"CLASS_NAMES_PATH: {CLASS_NAMES_PATH}")
 print(f"Current working directory: {os.getcwd()}")
-print(f"Files in directory: {os.listdir('.')}")
+print(f"Parent directory: {os.path.dirname(os.getcwd())}")
+
+# Listar archivos en el directorio actual y padre
+try:
+    print(f"Files in current directory: {os.listdir('.')}")
+    print(f"Files in parent directory: {os.listdir('..')}")
+except Exception as e:
+    print(f"Error listing directories: {e}")
 
 # Variables globales para el modelo y las clases
 model = None
@@ -201,8 +208,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",  # Desarrollo local
-        "https://monilia-app.vercel.app",  # Tu dominio de Vercel (actualiza si es diferente)
+        "https://monilia-8sco96gob-felipes-projects-4bcfded5.vercel.app",  # Tu dominio actual de Vercel
         "https://*.vercel.app",  # Permitir cualquier subdominio de Vercel
+        "*",  # Permitir todos los orígenes temporalmente para debugging
     ],
     allow_credentials=True,
     allow_methods=["*"],
