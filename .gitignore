@@ -1,0 +1,33 @@
+# Node
+node_modules/
+.next/
+.env
+
+# Python
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.h5
+*.keras
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Others
+*.bak
+*.swp
+*.tmp
+
+# Jupyter
+.ipynb_checkpoints/
