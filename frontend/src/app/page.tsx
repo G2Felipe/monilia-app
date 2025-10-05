@@ -12,6 +12,9 @@ import HistorySection from '@/components/HistorySection';
 import Footer from '@/components/Footer';
 import type { Prediction } from '@/types/Prediction';
 
+// URL del backend desplegado en Render
+const API_BASE_URL = 'https://monilia-app.onrender.com';
+
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [prediction, setPrediction] = useState<Prediction | null>(null);
@@ -26,7 +29,7 @@ export default function Home() {
       const formData = new FormData();
       formData.append('file', file);
       
-      const response = await axios.post('http://localhost:8000/predict', formData, {
+      const response = await axios.post(`${API_BASE_URL}/predict`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
