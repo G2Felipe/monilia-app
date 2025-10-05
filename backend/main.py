@@ -309,7 +309,11 @@ from fastapi.middleware.cors import CORSMiddleware
 # Configurar CORS después de crear la aplicación
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Permitir solo el frontend
+    allow_origins=[
+        "http://localhost:3000",  # Desarrollo local
+        "https://monilia-app.vercel.app",  # Tu dominio de Vercel (actualiza si es diferente)
+        "https://*.vercel.app",  # Permitir cualquier subdominio de Vercel
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
