@@ -20,8 +20,20 @@ app = FastAPI(
 # La configuración de CORS se realiza después de crear todas las rutas
 
 # Cargar el modelo y las clases
-MODEL_PATH = os.path.join(os.path.dirname(os.getcwd()), "cacao_resnet101_classifier3.keras")
-CLASS_NAMES_PATH = os.path.join(os.path.dirname(os.getcwd()), "class_names.json")
+# Detectar entorno y configurar rutas
+if os.path.exists('/opt/render/project/src/cacao_resnet101_classifier3.keras'):
+    # Entorno Render
+    MODEL_PATH = '/opt/render/project/src/cacao_resnet101_classifier3.keras'
+    CLASS_NAMES_PATH = '/opt/render/project/src/class_names.json'
+elif os.path.exists(os.path.join(os.path.dirname(os.getcwd()), "cacao_resnet101_classifier3.keras")):
+    # Entorno local desde backend/
+    MODEL_PATH = os.path.join(os.path.dirname(os.getcwd()), "cacao_resnet101_classifier3.keras")
+    CLASS_NAMES_PATH = os.path.join(os.path.dirname(os.getcwd()), "class_names.json")
+else:
+    # Fallback: buscar en el directorio actual
+    MODEL_PATH = "cacao_resnet101_classifier3.keras"
+    CLASS_NAMES_PATH = "class_names.json"
+
 UMBRAL_CONFIANZA_NO_CACAO = 70.0
 
 print(f"MODEL_PATH: {MODEL_PATH}")
@@ -210,7 +222,6 @@ app.add_middleware(
         "http://localhost:3000",  # Desarrollo local
         "https://monilia-8sco96gob-felipes-projects-4bcfded5.vercel.app",  # Tu dominio actual de Vercel
         "https://*.vercel.app",  # Permitir cualquier subdominio de Vercel
-        "*",  # Permitir todos los orígenes temporalmente para debugging
     ],
     allow_credentials=True,
     allow_methods=["*"],
