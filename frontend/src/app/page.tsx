@@ -12,8 +12,8 @@ import HistorySection from '@/components/HistorySection';
 import Footer from '@/components/Footer';
 import type { Prediction } from '@/types/Prediction';
 
-// URL del backend desplegado en Render
-const API_BASE_URL = 'https://monilia-app.onrender.com';
+// URL del backend - localhost para desarrollo
+const API_BASE_URL = 'http://localhost:8000';
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);

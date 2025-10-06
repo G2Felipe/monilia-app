@@ -220,6 +220,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",  # Desarrollo local
+        "http://localhost:3001",  # Desarrollo local alternativo
         "https://monilia-8sco96gob-felipes-projects-4bcfded5.vercel.app",  # Tu dominio actual de Vercel
         "https://*.vercel.app",  # Permitir cualquier subdominio de Vercel
     ],
