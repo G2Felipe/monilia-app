@@ -132,3 +132,8 @@ MIT License. Consulta el archivo LICENSE para más detalles.
 
 Desarrollado con FastAPI, Next.js y TensorFlow.
 Agradecimientos a las comunidades de [TensorFlow](https://www.tensorflow.org/), [FastAPI](https://fastapi.tiangolo.com/), [Next.js](https://nextjs.org/), [Render](https://render.com/) y [Vercel](https://vercel.com/).
+
+Desarrollado Por:
+Andrés Felipe Fonseca Gaona 
+Daniel Felipe Alonso Vaca
+Michell Stiven Barreto Cruz
